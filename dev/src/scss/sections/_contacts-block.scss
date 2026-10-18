@@ -1,0 +1,59 @@
+@use "@/scss/tools" as *;
+
+.contacts-block {
+	&__container {
+	}
+
+	&__list {
+		@include reset;
+		list-style-type: none;
+		display: flex;
+		flex-direction: column;
+		gap: adapt(32, 20);
+	}
+
+	&__item {
+		display: flex;
+		gap: adapt(32, 12);
+		align-items: center;
+
+		@include media($mobile) {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+
+	&__title-box {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		flex: 0 0 300px;
+
+		@include media($tablet) {
+			flex: 0 0 240px;
+		}
+
+		@include media($mobile) {
+			flex: initial;
+		}
+	}
+
+	&__icon {
+		width: 44px;
+		height: 44px;
+		&.no-icon {
+			@include media($mobile) {
+				display: none;
+			}
+		}
+	}
+
+	&__title {
+		@include reset;
+		font-weight: 700;
+		font-size: inherit;
+	}
+
+	&__content {
+	}
+}

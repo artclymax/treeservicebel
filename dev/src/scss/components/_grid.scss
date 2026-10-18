@@ -1,0 +1,58 @@
+@use "@/scss/tools" as *;
+@use "@/scss/components/typography" as *;
+
+.card-list {
+	@include reset;
+	list-style-type: none;
+	--gap: 24px;
+	--column: 3;
+	--width: calc((100% - var(--gap) * (var(--column) - 1)) / var(--column));
+
+	display: flex;
+	flex-wrap: wrap;
+	gap: adapt(40, 24) var(--gap);
+	justify-content: center;
+
+	@include media($tablet) {
+		--column: 2;
+	}
+	@include media($mobile-sm) {
+		--column: 1;
+	}
+
+	&__item {
+		min-width: 200px; //минимальная ширина, чтобы работало, как в grid minmax
+		flex: 0 1 var(--width);
+	}
+}
+
+.descr-box {
+	strong {
+		color: var(--color-green);
+	}
+	h1 {
+		@extend .title-1;
+	}
+	h2 {
+		@extend .title-2;
+	}
+	h3 {
+		@extend .title-3;
+	}
+	a {
+		color: inherit;
+		text-decoration: none;
+
+		@include hover {
+			color: var(--color-accent);
+		}
+	}
+	*:first-child {
+		padding-top: unset;
+		margin-top: unset;
+	}
+	*:last-child {
+		padding-bottom: unset;
+		margin-bottom: unset;
+	}
+}

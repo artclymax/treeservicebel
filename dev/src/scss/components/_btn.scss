@@ -1,0 +1,124 @@
+@use "@/scss/tools" as *;
+
+.btn {
+	text-decoration: none;
+	border: none;
+	background: transparent;
+	display: inline-flex;
+	padding: unset;
+	margin: unset;
+
+	border-radius: 4px;
+	border: 2px solid var(--color-accent);
+	background: var(--color-accent);
+	padding: 18px;
+	width: 285px;
+	color: var(--color-light);
+	font-weight: 700;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+
+	transition: all 0.3s;
+
+	@include hover {
+		background: var(--color-white);
+		color: var(--color-accent);
+	}
+
+	@include media($mobile-sm) {
+		width: 100%;
+	}
+
+	&--stroke {
+		background: var(--color-white);
+		color: var(--color-accent);
+
+		@include hover {
+			background: var(--color-accent);
+			color: var(--color-white);
+		}
+	}
+}
+.phone-btn {
+	@include reset;
+	background: transparent;
+	border: none;
+	@include square(45px);
+	padding: 5px;
+	flex-shrink: 0;
+	color: var(--color-accent);
+	transition: all 0.3s;
+	.open-phone-menu & {
+		transform: rotate(90deg);
+	}
+}
+.burger-btn {
+	@include reset;
+	background: transparent;
+	border: none;
+	@include square(45px);
+	flex-shrink: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 6px;
+
+	span {
+		.open-header-menu & {
+			width: 0;
+		}
+	}
+	span,
+	&::before,
+	&::after {
+		width: 80%;
+		background: var(--color-accent);
+		height: 4px;
+		border-radius: 4px;
+		transition: all 0.3s;
+	}
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		top: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 80%;
+		.open-header-menu & {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%) rotate(45deg);
+		}
+	}
+	&::after {
+		top: unset;
+		bottom: 10px;
+
+		.open-header-menu & {
+			position: absolute;
+			bottom: unset;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%) rotate(-45deg);
+		}
+	}
+}
+.link {
+	@include reset;
+	background: transparent;
+	border: none;
+	text-align: left;
+	display: inline-flex;
+	text-decoration: none;
+	color: inherit;
+	transition: all 0.3s;
+
+	@include hoverLine(slide, var(--color-accent), 2px);
+	@include hover {
+		color: var(--color-accent);
+	}
+}

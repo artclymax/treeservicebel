@@ -1,0 +1,15 @@
+@use "@/scss/tools" as *;
+
+.excerpt {
+	text-align: center;
+	&__container {
+	}
+
+	&__title {
+		@include reset-child;
+	}
+
+	&__descr-box {
+		@include reset-child;
+	}
+}

@@ -1,0 +1,152 @@
+@use "@/scss/tools" as *;
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100dvh;
+	z-index: 1000;
+	background: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(50px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 10px;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.35s ease;
+
+	.admin-bar & {
+		//top: var(--wp-admin-bar-height);
+		//height: calc(100dvh - var(--wp-admin-bar-height));
+	}
+	&.active-modal {
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	&__box {
+		background-color: var(--color-light);
+		background-position: center center;
+		background-size: contain;
+		background-repeat: no-repeat;
+		padding: 10px;
+		overflow: auto;
+
+		transform: scale(0.8);
+		opacity: 0;
+
+		transition:
+			transform 0.35s cubic-bezier(0.17, 0.67, 0.55, 1.39),
+			opacity 0.3s ease;
+
+		.modal.active-modal & {
+			opacity: 1;
+			transform: scale(1);
+		}
+
+		#form-modal & {
+			max-width: 870px;
+			width: 100%;
+		}
+	}
+
+	&__close-btn {
+		@include reset;
+		background: transparent;
+		color: var(--color-accent);
+		border: none;
+		padding: 10px;
+		position: absolute;
+		top: 0;
+		right: 0;
+		transition: all 0.3s;
+
+		svg {
+			transition: all 0.3s;
+		}
+
+		@include hover {
+			opacity: 0.8;
+			svg {
+				transform: rotate(90deg);
+			}
+		}
+	}
+}
+.form-modal {
+	max-width: 871px;
+	width: 100%;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 20px;
+	min-height: 90dvh;
+
+	&__wrapper {
+		max-width: 420px;
+	}
+	&__title {
+		&:not(:last-child) {
+			margin-bottom: 20px;
+		}
+	}
+
+	&__form {
+		@include media($mobile-sm) {
+			width: 100%;
+		}
+	}
+}
+
+.news-modal {
+	max-width: 1200px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding-top: adapt(100, 60);
+	padding-bottom: adapt(100, 30);
+	&__title {
+		&:not(:last-child) {
+			margin-bottom: adapt(40, 24);
+		}
+	}
+	&__descr {
+		&:not(:last-child) {
+			margin-bottom: adapt(80, 24);
+		}
+	}
+	&__important {
+		--icon-width: #{adapt(50, 40)};
+
+		@include reset;
+		position: relative;
+		padding-left: calc(var(--icon-width) + #{adapt(32, 16)});
+
+		&:not(:last-child) {
+			margin-bottom: adapt(80, 24);
+		}
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: -3px;
+			left: 0;
+			width: var(--icon-width);
+			height: var(--icon-width);
+
+			background-image: var(--icon);
+			background-position: center center; /* x y */
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+	}
+	&__btn {
+		width: max-content;
+	}
+}

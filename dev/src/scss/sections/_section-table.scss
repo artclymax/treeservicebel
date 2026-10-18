@@ -1,0 +1,41 @@
+@use "@/scss/tools" as *;
+
+.section-table {
+	&__container {
+	}
+
+	&__title {
+	}
+
+	&__descr {
+		margin-bottom: 20px;
+		text-align: center;
+	}
+
+	&__table-box {
+		overflow-y: auto;
+	}
+
+	&__table {
+		width: 100%;
+		border-collapse: collapse;
+		thead {
+			background-color: var(--color-accent);
+			color: var(--color-white);
+		}
+		th,
+		td {
+			padding: adapt(20, 10);
+			text-align: left;
+			min-width: adapt(200, 160);
+		}
+
+		tr {
+			border-bottom: 2px solid var(--color-accent);
+		}
+
+		tbody tr:last-child {
+			border-bottom: none; /* можно убрать последнюю нижнюю границу */
+		}
+	}
+}

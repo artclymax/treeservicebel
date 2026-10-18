@@ -1,0 +1,40 @@
+@use "@/scss/tools" as *;
+// Typography
+.title-1,
+.title-2,
+.title-3 {
+	@include reset;
+
+	font-family: var(--font-family-title);
+	text-align: center;
+	font-weight: 700;
+	line-height: 120%;
+
+	strong {
+		color: var(--color-green);
+		font-weight: inherit;
+	}
+}
+
+.title-1 {
+	font-size: adapt(48, 26);
+	line-height: 1;
+	&:not(:last-child) {
+		margin-bottom: adapt(42, 20);
+	}
+}
+
+.title-2 {
+	font-size: adapt(36, 24);
+}
+.title-3 {
+	font-size: adapt(24, 16);
+	font-weight: 600;
+}
+
+.upcase {
+	text-transform: uppercase;
+}
+.hint {
+	color: var(--color-gray);
+}

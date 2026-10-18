@@ -1,0 +1,93 @@
+@use "@/scss/tools" as *;
+
+.section {
+}
+.reviews {
+	&__container {
+		--container-width: 1330px;
+	}
+
+	&__title {
+	}
+	&__swiper {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+		@include media($mobile) {
+			display: block;
+		}
+	}
+}
+
+.swiper-review {
+	order: 2;
+	@include media($mobile) {
+		order: initial;
+	}
+
+	&__wrapper {
+	}
+
+	&__pagination {
+		--swiper-theme-color: var(--color-accent);
+		display: flex;
+		justify-content: center;
+		padding-top: 20px;
+		@include media($mobile, min) {
+			display: none;
+		}
+	}
+
+	&__btn {
+		
+
+		@include media($mobile) {
+			display: none;
+		}
+	}
+
+	&__btn-prev {
+		order: 1;
+	}
+
+	&__btn-next {
+		order: 3;
+	}
+}
+.review-slide {
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__image-link {
+		display: flex;
+		height: 260px;
+		background: var(--color-gray);
+		box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+		@include reset;
+		border-radius: 6px;
+		overflow: hidden;
+
+		@include hover {
+			img {
+				transform: scale(1.05);
+			}
+		}
+		img {
+			transition: all 0.3s;
+		}
+	}
+
+	&__title {
+		flex-grow: 1;
+	}
+
+	&__meta {
+		@include reset;
+	}
+
+	&__descr {
+	}
+}

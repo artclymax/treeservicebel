@@ -1,0 +1,313 @@
+@use "@/scss/tools" as *;
+@use "@/scss/components/btn" as *;
+
+.hero-page {
+	position: relative;
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.3);
+	}
+}
+
+.hero-404 {
+	position: relative;
+	color: var(--color-white);
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.3);
+	}
+	.hero__content {
+		position: relative;
+		z-index: 2;
+		&::after {
+			display: none;
+		}
+	}
+	.hero__404 {
+		@include reset;
+		font-family: var(--font-family-title);
+		font-weight: 700;
+		font-size: adapt(250, 150);
+		text-align: center;
+		line-height: 1;
+	}
+}
+
+.hero {
+	padding-top: calc(var(--header-menu-height) + 60px);
+	padding-bottom: adapt(60, 40);
+	position: relative;
+	box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.25);
+	@include media($tablet) {
+		padding-top: adapt(60, 40);
+	}
+	&__container {
+		min-height: 50dvh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: adapt(60, 30, $tablet);
+
+		.hero-404 &,
+		.hero-thanks & {
+			min-height: 70dvh;
+		}
+
+		.hero-page & {
+			min-height: 35dvh;
+			color: var(--color-white);
+		}
+	}
+	&__content {
+		position: relative;
+		max-width: 1000px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: adapt(20, 12);
+		text-align: center;
+		&::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			transform: scale(1);
+			filter: blur(40px);
+			background: var(--color-white);
+			z-index: 1;
+		}
+	}
+	&__title.title-1 {
+		position: relative;
+		z-index: 2;
+		margin-bottom: unset;
+	}
+
+	&__text {
+		@include reset;
+		position: relative;
+		z-index: 2;
+		font-size: adapt(24, 20);
+		font-weight: 600;
+	}
+	&__btn {
+		position: relative;
+		z-index: 2;
+		width: 100%;
+		margin-top: 10px;
+		@include media($mobile, min) {
+			display: none;
+		}
+	}
+	&__form-wrapper {
+		position: relative;
+		z-index: 2;
+		background: var(--color-white);
+		max-width: 590px;
+		padding: 35px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 20px;
+		border-radius: 4px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+		@include media($mobile) {
+			display: none;
+		}
+	}
+	&__form {
+	}
+	&__image {
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	&__thanks-form {
+		position: relative;
+		z-index: 2;
+		max-width: 380px;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	&__thanks-btn {
+		width: 100%;
+	}
+	&__link {
+		position: absolute;
+		bottom: -40px;
+		left: 50%;
+		transform: translateX(-50%);
+		transition: all 0.3s;
+		width: adapt(124, 45);
+		@include hover {
+			bottom: -50px;
+		}
+		@include media($tablet) {
+			bottom: -30px;
+			@include hover {
+				bottom: -40px;
+			}
+		}
+		@include media($mobile-sm) {
+			bottom: -15px;
+			@include hover {
+				bottom: -25px;
+			}
+		}
+	}
+}
+
+.hero-form {
+	max-width: 390px;
+	form {
+		margin: 0 auto;
+	}
+	form p {
+		@include reset;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 20px;
+
+		.wpcf7-form-control-wrap {
+			position: relative;
+
+			input {
+				width: 100%;
+				padding: 18px 20px;
+				background: var(--color-white);
+				border-radius: 6px;
+				border: 1px solid var(--color-accent);
+			}
+
+			.wpcf7-not-valid-tip {
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: translateY(-100%);
+				color: var(--color-accent);
+				font-size: 14px;
+			}
+
+			&[data-name^="acceptance-"] {
+				justify-self: flex-start;
+				width: 100%;
+				label {
+					display: flex;
+
+					input {
+						position: absolute;
+						opacity: 0;
+						overflow: hidden;
+						display: none;
+					}
+
+					input:checked ~ span {
+						&::before {
+							opacity: 1;
+						}
+					}
+
+					span {
+						//display: inline-flex;
+						display: inline-block;
+						padding-left: 52px;
+						padding-top: 2px;
+						font-size: 14px;
+						font-weight: 500;
+
+						position: relative;
+						&::before {
+							content: "";
+							position: absolute;
+							z-index: 2;
+							top: -2px;
+							left: 4px;
+							@include square(rem(24));
+							background: url("../../../../assets/images/icons/check.svg");
+							background-repeat: no-repeat;
+							background-position: center;
+							background-size: 100%;
+							opacity: 0;
+							transition: all 0.3s;
+						}
+						&::after {
+							content: "";
+							position: absolute;
+							top: -5px;
+							left: 0;
+							@include square(rem(32));
+							background: var(--color-white);
+							border: 1px solid var(--color-accent);
+							border-radius: 2px;
+						}
+					}
+				}
+			}
+		}
+
+		.form-btn {
+			@extend .btn;
+			justify-self: start;
+			width: 100%;
+
+			@include media($mobile) {
+				justify-self: unset;
+				max-width: 100%;
+			}
+			@include media($mobile-sm) {
+				width: 100%;
+				max-width: 330px;
+				padding-inline: 4px;
+			}
+		}
+	}
+	form a {
+		display: inline-block;
+		padding-left: 2px;
+		color: inherit;
+		transition: color 0.3s;
+
+		@include hover {
+			color: var(--color-accent);
+		}
+	}
+	.wpcf7-response-output {
+		padding: 10px;
+		border: 1px solid var(--color-accent);
+		border-radius: 8px;
+		font-size: 16px;
+		font-weight: 500;
+		background: var(--color-white);
+
+		&:not(:first-child) {
+			margin-top: 10px;
+		}
+	}
+}

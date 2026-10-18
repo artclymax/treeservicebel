@@ -1,0 +1,73 @@
+@use "../tools" as *;
+
+html {
+	box-sizing: border-box;
+	font-size: var(--font-size-html);
+	min-height: 100%;
+	scroll-behavior: smooth;
+	scrollbar-gutter: stable;
+
+	//@include custom-scroll(var(--color-gray), var(--color-accent));
+}
+
+body {
+	min-width: rem($finishBreakpoint); // ! сайт будет масштабироваться
+	min-height: 100dvh;
+	font-family: var(--font-family-main);
+	font-size: var(--font-size);
+	font-weight: 500;
+
+	color: var(--color-dark);
+	background: var(--color-white);
+	line-height: var(--line-height);
+
+	.open-header-menu &,
+	.open-phone-menu &,
+	.active-modal &,
+	.open-menu & {
+		overflow: hidden;
+	}
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	//overflow: hidden;
+	min-height: 100dvh;
+	position: relative;
+	& > main {
+		flex: 1 1 auto;
+	}
+
+	@include media($tablet) {
+		padding-bottom: var(--nav-bar-height);
+	}
+}
+
+.container {
+	max-width: calc(var(--container-width) + (var(--container-padding) * 2));
+	padding-inline: var(--container-padding);
+	margin: 0 auto;
+	&--wide {
+		--container-width: 1360px;
+	}
+}
+
+.section {
+	padding-block: var(--section-padding);
+}
+
+
+.logo {
+	flex-shrink: 0;
+	transition: all 0.3s;
+	a {
+		display: inline-flex;
+		height: adapt(160, 65, $tablet);
+	}
+	@include hover {
+		transform: scale(1.05);
+	}
+}
+

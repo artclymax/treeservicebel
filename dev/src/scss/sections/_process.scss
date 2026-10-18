@@ -1,0 +1,71 @@
+@use "@/scss/tools" as *;
+.process {
+	&__container {
+		--container-width: 1270px;
+	}
+
+	&__title {
+	}
+
+	&__descr{
+		margin-bottom: 20px;
+	}
+}
+.swiper-process {
+	&__wrapper {
+	}
+}
+.process-slide {
+	width: 260px;
+
+	.slide-4 & {
+		width: 330px;
+	}
+
+	@include media($mobile) {
+		width: adapt(260, 320);
+	}
+
+	text-align: center;
+	//box-sizing: border-box;
+	&:last-child .process-slide__wrapper::after {
+		display: none;
+	}
+	&__wrapper {
+		padding-inline: 30px;
+		position: relative;
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 46px;
+			right: 0;
+			transform: translateX(20px);
+			width: 40px;
+			height: 40px;
+			background-image: url("../../../../assets/images/icons/arrow-right.svg");
+			background-position: center center; /* x y */
+			background-size: contain;
+			background-repeat: no-repeat;
+			.arrow-2 & {
+				background-image: url("../../../../assets/images/icons/arrow-right-2.svg");
+			}
+			.arrow-mobile & {
+				@include media(1270, min) {
+					display: none;
+				}
+			}
+		}
+	}
+
+	&__icon {
+		height: 120px;
+		&:not(:last-child) {
+			margin-bottom: 24px;
+		}
+	}
+
+	&__text {
+		@include reset;
+	}
+}
